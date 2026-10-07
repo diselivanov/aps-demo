@@ -4,7 +4,7 @@
   justify-content: center;
   height: var(--control-h);
   padding: 0 var(--sp-4);
-  font-size: var(--fs-sm);
+  font-size: inherit;
   border-radius: var(--radius-md);
   transition:
     background var(--transition),

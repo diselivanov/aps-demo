@@ -3,7 +3,7 @@
   width: 100%;
   min-height: calc(var(--control-h) * 2);
   padding: var(--sp-3);
-  font-size: var(--fs-sm);
+  font-size: inherit;
   color: var(--fg);
   background: var(--bg);
   border: 1px solid var(--border);

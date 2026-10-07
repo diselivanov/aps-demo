@@ -4,7 +4,7 @@
   width: 100%;
   height: var(--control-h);
   padding: 0 var(--sp-3);
-  font-size: var(--fs-sm);
+  font-size: inherit;
   color: var(--fg);
   background: var(--bg);
   border: 1px solid var(--border);
