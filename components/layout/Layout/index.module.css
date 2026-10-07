@@ -1,39 +1,11 @@
 .layout {
   display: flex;
-  flex-direction: column;
   height: 100dvh;
-}
-
-.header {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  height: var(--header-h);
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
-  padding: 0 var(--sp-5);
-}
-
-.logo {
-  font-size: var(--fs-md);
-  font-weight: 500;
 }
 
 .main {
   flex: 1;
-  min-height: 0;
+  min-width: 0;
   overflow-y: auto;
   background: var(--bg-secondary);
-}
-
-.footer {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  height: var(--header-h);
-  border-top: 1px solid var(--border);
-  background: var(--bg-secondary);
-  font-size: var(--fs-xs);
-  color: var(--fg-secondary);
-  padding: 0 var(--sp-5);
 }

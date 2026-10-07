@@ -1,0 +1,43 @@
+.stack {
+  position: fixed;
+  right: var(--sp-5);
+  bottom: var(--sp-5);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  pointer-events: none;
+  min-width: 210px;
+}
+
+.alert {
+  position: relative;
+  overflow: hidden;
+  pointer-events: auto;
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+  line-height: 1.4;
+  backdrop-filter: blur(16px) saturate(180%);
+}
+
+.success {
+  background: var(--glass-success);
+  color: var(--success);
+}
+
+.error {
+  background: var(--glass-error);
+  color: var(--danger);
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transform-origin: left;
+  opacity: 0.6;
+}

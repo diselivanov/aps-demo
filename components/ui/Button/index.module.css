@@ -6,10 +6,6 @@
   padding: 0 var(--sp-4);
   font-size: inherit;
   border-radius: var(--radius-md);
-  transition:
-    background var(--transition),
-    color var(--transition),
-    border-color var(--transition);
   white-space: nowrap;
 }
 

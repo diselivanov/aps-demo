@@ -1,3 +1,15 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  width: 100%;
+}
+
+.control {
+  position: relative;
+  width: 100%;
+}
+
 .input {
   display: flex;
   align-items: center;
@@ -12,6 +24,37 @@
   outline: none;
 }
 
-.input::placeholder {
+.input:focus {
+  border-color: var(--fg);
+}
+
+.label {
+  position: absolute;
+  left: var(--sp-3);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--fs-sm);
   color: var(--fg-secondary);
+  pointer-events: none;
+  padding: 0 var(--sp-1);
+  background: var(--bg);
+  transition: top var(--transition);
+}
+
+.lifted {
+  top: 0;
+  font-size: var(--fs-xs);
+}
+
+.invalid {
+  border-color: var(--danger);
+}
+
+.invalid:focus {
+  border-color: var(--danger);
+}
+
+.error {
+  font-size: var(--fs-xs);
+  color: var(--danger);
 }

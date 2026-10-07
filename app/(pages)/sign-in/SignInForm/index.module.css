@@ -1,0 +1,13 @@
+.hint {
+  font-size: var(--fs-sm);
+  color: var(--fg-secondary);
+  text-align: center;
+}
+
+.hint a {
+  color: var(--fg);
+}
+
+.hint a:hover {
+  text-decoration: underline;
+}

@@ -8,6 +8,7 @@
   --fg-secondary: #666666;
   --bg: #ffffff;
   --bg-secondary: #fafafa;
+  --bg-tertiary: #f5f5f5;
 
   --btn: #000000;
   --btn-hover: #333333;
@@ -15,17 +16,28 @@
 
   --border: rgba(0, 0, 0, 0.1);
 
+  --danger: #c62828;
+  --success: #2e7d32;
+
+  --glass-success: rgba(46, 125, 50, 0.12);
+  --glass-error: rgba(198, 40, 40, 0.12);
+
+  /* shadows */
+  --shadow-sm: 0 0 8px rgba(0, 0, 0, 0.06);
+
   /* radii */
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 8px;
-  --radius-xl: 12px;
   --radius-full: 9999px;
 
   /* sizes */
-  --header-h: 50px;
   --control-h: 36px;
   --sidebar-w: 240px;
+  --aside-w: 60px;
+  --avatar-size: 64px;
+  --form-w-sm: 400px;
+  --form-w-md: 560px;
 
   /* spacing */
   --sp-1: 4px;
@@ -33,16 +45,13 @@
   --sp-3: 12px;
   --sp-4: 16px;
   --sp-5: 24px;
-  --sp-6: 32px;
-  --sp-7: 48px;
 
   /* typography */
   --fs-xs: 12.5px;
-  --fs-sm: 14.5px;
+  --fs-sm: 14px;
   --fs-md: 16px;
   --fs-lg: 20px;
-  --fs-xl: 24px;
 
   /* other */
-  --transition: 0.15s;
+  --transition: 0.1s;
 }
