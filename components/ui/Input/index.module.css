@@ -1,0 +1,17 @@
+.input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--control-h);
+  padding: 0 var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--fg-secondary);
+}
