@@ -11,12 +11,16 @@
   display: flex;
   align-items: center;
   height: var(--aside-w);
-  padding: 0 var(--sp-5);
+  padding: var(--sp-3);
   font-size: var(--fs-md);
   font-weight: 500;
 }
 
 .nav {
   flex: 1;
-  padding: var(--sp-3) var(--sp-3);
+  padding: var(--sp-3);
+}
+
+.footer {
+  padding: var(--sp-3);
 }

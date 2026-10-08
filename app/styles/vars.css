@@ -30,14 +30,13 @@
   /* radii */
   --radius-sm: 4px;
   --radius-md: 6px;
-  --radius-lg: 8px;
+  --radius-lg: 10px;
   --radius-full: 9999px;
 
   /* sizes */
   --control-h: 36px;
-  --sidebar-w: 240px;
-  --aside-w: 60px;
-  --avatar-size: 64px;
+  --sidebar-w: 220px;
+  --avatar-size: 34px;
   --form-w-sm: 400px;
   --form-w-md: 560px;
 

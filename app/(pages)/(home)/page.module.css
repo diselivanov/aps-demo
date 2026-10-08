@@ -1,5 +1,3 @@
 .page {
   display: flex;
-  gap: var(--sp-3);
-  padding: var(--sp-5);
 }

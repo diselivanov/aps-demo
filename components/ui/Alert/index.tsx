@@ -19,7 +19,7 @@ type AlertContextValue = {
 
 const AlertContext = createContext<AlertContextValue | null>(null);
 
-const AUTO_CLOSE_MS = 6500;
+const AUTO_CLOSE_MS = 5000;
 
 export function AlertProvider({ children }: { children: ReactNode }) {
   const [alerts, setAlerts] = useState<Alert[]>([]);

@@ -50,49 +50,44 @@ export default function UserMenu({ user }: Props) {
         type="button"
         className={styles.trigger}
         onClick={() => setOpen((v) => !v)}
-        aria-label="Профиль"
+        aria-label="Меню пользователя"
       >
-        <Icon name="user" size={20} />
+        <span className={styles.avatar}>
+          <Icon name="user" size={16} />
+        </span>
+        <span className={styles.name}>{user.name}</span>
+        <Icon name="more" size={14} className={styles.more} />
       </button>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.95, y: 4 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 4 }}
             transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className={styles.dropdown}
           >
-            <div className={styles.user}>
-              <div className={styles.avatar}>
-                <Icon name="user" size={26} />
-              </div>
-              <span className={styles.name}>{user.name}</span>
-            </div>
+            <Link
+              href="/settings"
+              className={styles.item}
+              onClick={() => setOpen(false)}
+            >
+              <Icon name="settings" size={16} />
+              Настройки
+            </Link>
 
-            <div className={styles.actions}>
-              <Link
-                href="/settings"
-                className={styles.item}
-                onClick={() => setOpen(false)}
-              >
-                <Icon name="settings" size={18} />
-                Настройки
-              </Link>
-
-              <button
-                type="button"
-                className={styles.item}
-                onClick={() => {
-                  setOpen(false);
-                  setConfirm(true);
-                }}
-              >
-                <Icon name="logout" size={18} />
-                Выйти
-              </button>
-            </div>
+            <button
+              type="button"
+              className={styles.item}
+              onClick={() => {
+                setOpen(false);
+                setConfirm(true);
+              }}
+            >
+              <Icon name="logout" size={16} />
+              Выйти
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
