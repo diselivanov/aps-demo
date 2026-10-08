@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Icon from "@/components/ui/Icon";
+import ConfirmModal from "@/components/ui/ConfirmModal";
 import { useAlert } from "@/components/ui/Alert";
 import styles from "./index.module.css";
 
@@ -17,6 +18,7 @@ type Props = {
 
 export default function UserMenu({ user }: Props) {
   const [open, setOpen] = useState(false);
+  const [confirm, setConfirm] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
   const { show } = useAlert();
@@ -31,6 +33,7 @@ export default function UserMenu({ user }: Props) {
   }, [open]);
 
   const logout = async () => {
+    setConfirm(false);
     const res = await fetch("/api/auth/logout", { method: "POST" });
     if (!res.ok) {
       show({ type: "error", message: "Не удалось выйти" });
@@ -78,7 +81,14 @@ export default function UserMenu({ user }: Props) {
                 Настройки
               </Link>
 
-              <button type="button" className={styles.item} onClick={logout}>
+              <button
+                type="button"
+                className={styles.item}
+                onClick={() => {
+                  setOpen(false);
+                  setConfirm(true);
+                }}
+              >
                 <Icon name="logout" size={18} />
                 Выйти
               </button>
@@ -86,6 +96,16 @@ export default function UserMenu({ user }: Props) {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <ConfirmModal
+        open={confirm}
+        title="Выход из аккаунта"
+        description="Вы уверены, что хотите выйти из аккаунта?"
+        confirmText="Выйти"
+        cancelText="Отмена"
+        onConfirm={logout}
+        onCancel={() => setConfirm(false)}
+      />
     </div>
   );
 }
