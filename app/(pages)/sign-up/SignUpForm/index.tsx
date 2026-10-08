@@ -43,7 +43,7 @@ export default function SignUpForm() {
   return (
     <FormWrapper title="Регистрация" onSubmit={handleSubmit(onSubmit)}>
       <Input
-        placeholder="Имя"
+        placeholder="Отображаемое имя"
         autoComplete="name"
         error={errors.name?.message}
         {...register("name")}

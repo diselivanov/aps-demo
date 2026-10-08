@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       email,
       passwordHash: await hashPassword(password),
     },
-    select: { id: true, email: true, name: true, role: true },
+    select: { id: true, email: true, name: true },
   });
 
   await createSession(user.id);
