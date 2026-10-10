@@ -1,0 +1,133 @@
+.root {
+  position: relative;
+  width: 100%;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  width: 100%;
+  height: var(--control-h);
+  padding: 0 var(--sp-3);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+  text-align: left;
+  outline: none;
+}
+
+.trigger:focus-visible,
+.open {
+  border-color: var(--fg);
+}
+
+.badges {
+  display: flex;
+  gap: var(--sp-1);
+  flex: 1;
+  min-width: 0;
+  align-items: center;
+  margin-top: var(--sp-1);
+  overflow: hidden;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--sp-1) var(--sp-2);
+  font-size: var(--fs-xs);
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.arrow {
+  flex-shrink: 0;
+}
+
+.label {
+  position: absolute;
+  left: var(--sp-3);
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 1;
+  font-size: var(--fs-sm);
+  color: var(--fg-secondary);
+  pointer-events: none;
+  padding: 0 var(--sp-1);
+  background: var(--bg);
+  transition:
+    top var(--transition),
+    font-size var(--transition);
+}
+
+.lifted {
+  top: 0;
+  font-size: var(--fs-xs);
+}
+
+.dropdown {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + var(--sp-1));
+  z-index: 50;
+  max-height: 240px;
+  overflow-y: auto;
+  padding: var(--sp-1);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transform-origin: top;
+}
+
+.dropdownTop {
+  top: auto;
+  bottom: calc(100% + var(--sp-1));
+  transform-origin: bottom;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--fs-sm);
+  text-align: left;
+  border-radius: var(--radius-sm);
+  color: var(--fg);
+}
+
+.option:hover {
+  background: var(--bg-tertiary);
+}
+
+.optionLabel {
+  flex: 1;
+  min-width: 0;
+}
+
+.checkbox {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1.5px var(--border);
+  color: var(--bg);
+}
+
+.checkboxChecked {
+  background: var(--fg);
+  box-shadow: none;
+}

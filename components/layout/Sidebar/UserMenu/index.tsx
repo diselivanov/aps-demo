@@ -56,7 +56,7 @@ export default function UserMenu({ user }: Props) {
           <Icon name="user" size={16} />
         </span>
         <span className={styles.name}>{user.name}</span>
-        <Icon name="more" size={14} className={styles.more} />
+        <Icon name="ellipsis" size={14} className={styles.more} />
       </button>
 
       <AnimatePresence>
@@ -85,7 +85,7 @@ export default function UserMenu({ user }: Props) {
                 setConfirm(true);
               }}
             >
-              <Icon name="logout" size={16} />
+              <Icon name="logOut" size={16} />
               Выйти
             </button>
           </motion.div>

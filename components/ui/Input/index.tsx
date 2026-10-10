@@ -15,6 +15,7 @@ export default function Input({
   onFocus,
   onBlur,
   onChange,
+  onKeyDown,
   defaultValue,
   value,
   ...props
@@ -47,6 +48,13 @@ export default function Input({
           onChange={(e) => {
             if (!controlled) setInner(e.target.value);
             onChange?.(e);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !onKeyDown) {
+              e.preventDefault();
+              return;
+            }
+            onKeyDown?.(e);
           }}
           placeholder=" "
           suppressHydrationWarning

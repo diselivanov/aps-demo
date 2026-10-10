@@ -1,0 +1,50 @@
+.empty {
+  padding: var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--fg-secondary);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  width: 100%;
+  height: var(--control-h-sm);
+  padding: 0 var(--sp-2);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+  text-align: left;
+  color: var(--fg);
+}
+
+.item:hover {
+  background: var(--bg-tertiary);
+}
+
+.active {
+  background: var(--bg-tertiary);
+}
+
+.arrow {
+  flex-shrink: 0;
+}
+
+.label {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.renameInput {
+  flex: 1;
+  min-width: 0;
+  height: 22px;
+  padding: 0 var(--sp-1);
+  font-size: var(--fs-sm);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  outline: none;
+}

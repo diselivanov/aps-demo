@@ -8,10 +8,132 @@ datasource db {
 }
 
 model User {
-    id           String   @id @default(cuid())
-    email        String   @unique
+    id           String    @id @default(cuid())
+    email        String    @unique
     passwordHash String
     name         String
-    createdAt    DateTime @default(now())
-    updatedAt    DateTime @updatedAt
+    createdAt    DateTime  @default(now())
+    updatedAt    DateTime  @updatedAt
+    comments     Comment[]
+    folders      Folder[]
+    tables       Table[]
+    rows         Row[]
+}
+
+model Folder {
+    id        Int      @id @default(autoincrement())
+    name      String
+    parentId  Int?
+    parent    Folder?  @relation("FolderTree", fields: [parentId], references: [id], onDelete: Restrict)
+    children  Folder[] @relation("FolderTree")
+    tables    Table[]
+    createdBy String
+    creator   User     @relation(fields: [createdBy], references: [id], onDelete: Restrict)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Table {
+    id        Int          @id @default(autoincrement())
+    name      String
+    folderId  Int?
+    folder    Folder?      @relation(fields: [folderId], references: [id], onDelete: Restrict)
+    fields    Field[]
+    rows      Row[]
+    config    TableConfig?
+    createdBy String
+    creator   User         @relation(fields: [createdBy], references: [id], onDelete: Restrict)
+    createdAt DateTime     @default(now())
+    updatedAt DateTime     @updatedAt
+}
+
+enum FieldType {
+    STRING
+    TEXT
+    NUMBER
+    DATE
+    SELECT
+    MULTI_SELECT
+    FILE
+}
+
+model Field {
+    id       Int        @id @default(autoincrement())
+    tableId  Int
+    table    Table      @relation(fields: [tableId], references: [id], onDelete: Cascade)
+    key      String
+    label    String
+    type     FieldType
+    required Boolean    @default(false)
+    options  Json?
+    order    Int
+    values   RowValue[]
+    files    RowFile[]
+
+    @@unique([tableId, key])
+}
+
+model Row {
+    id        Int        @id @default(autoincrement())
+    tableId   Int
+    table     Table      @relation(fields: [tableId], references: [id], onDelete: Cascade)
+    values    RowValue[]
+    files     RowFile[]
+    comments  Comment[]
+    createdBy String
+    creator   User       @relation(fields: [createdBy], references: [id], onDelete: Restrict)
+    createdAt DateTime   @default(now())
+    updatedAt DateTime   @updatedAt
+}
+
+model RowValue {
+    id          Int       @id @default(autoincrement())
+    rowId       Int
+    row         Row       @relation(fields: [rowId], references: [id], onDelete: Cascade)
+    fieldId     Int
+    field       Field     @relation(fields: [fieldId], references: [id], onDelete: Cascade)
+    valueString String?
+    valueNumber Float?
+    valueDate   DateTime?
+    order       Int       @default(0)
+
+    @@unique([rowId, fieldId, order])
+    @@index([fieldId, valueString])
+    @@index([fieldId, valueNumber])
+    @@index([fieldId, valueDate])
+}
+
+model RowFile {
+    id        Int      @id @default(autoincrement())
+    rowId     Int
+    row       Row      @relation(fields: [rowId], references: [id], onDelete: Cascade)
+    fieldId   Int
+    field     Field    @relation(fields: [fieldId], references: [id], onDelete: Cascade)
+    name      String
+    path      String
+    mime      String
+    size      Int
+    createdAt DateTime @default(now())
+
+    @@index([rowId, fieldId])
+}
+
+model Comment {
+    id        Int      @id @default(autoincrement())
+    rowId     Int
+    row       Row      @relation(fields: [rowId], references: [id], onDelete: Cascade)
+    authorId  String
+    author    User     @relation(fields: [authorId], references: [id], onDelete: Restrict)
+    text      String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([rowId])
+}
+
+model TableConfig {
+    tableId  Int   @id
+    table    Table @relation(fields: [tableId], references: [id], onDelete: Cascade)
+    columns  Json
+    pageSize Int   @default(25)
 }

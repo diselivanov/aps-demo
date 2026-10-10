@@ -7,8 +7,9 @@
   align-items: center;
   gap: var(--sp-2);
   width: 100%;
-  padding: var(--sp-1) var(--sp-2) var(--sp-1) var(--sp-1);
-  border-radius: var(--radius-lg);
+  height: var(--control-h);
+  padding: 0 var(--sp-2);
+  border-radius: var(--radius-md);
   text-align: left;
 }
 
@@ -21,9 +22,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: var(--avatar-size);
-  height: var(--avatar-size);
-  border: 1px solid var(--border);
   border-radius: var(--radius-full);
 }
 
@@ -51,7 +49,7 @@
   padding: var(--sp-1) 0;
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
   padding: var(--sp-1);
   overflow: hidden;
@@ -62,9 +60,9 @@
   align-items: center;
   gap: var(--sp-3);
   padding: 0 var(--sp-3);
-  height: var(--control-h);
+  height: var(--control-h-sm);
   font-size: var(--fs-sm);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   color: var(--fg);
   text-align: left;
 }

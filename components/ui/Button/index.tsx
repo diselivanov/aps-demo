@@ -10,10 +10,12 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 export default function Button({
   variant = "primary",
   className,
+  type = "button",
   ...props
 }: Props) {
   return (
     <button
+      type={type}
       className={`${styles.btn} ${styles[variant]} ${className ?? ""}`}
       {...props}
     />

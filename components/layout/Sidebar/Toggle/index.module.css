@@ -1,0 +1,27 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-h-sm);
+  height: var(--control-h-sm);
+  margin-left: auto;
+  border-radius: var(--radius-md);
+}
+
+.btn:hover {
+  background: var(--bg-tertiary);
+}
+
+.floating {
+  position: fixed;
+  left: var(--sp-3);
+  top: var(--sp-3);
+  z-index: 100;
+  margin-left: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.floating:hover {
+  background: var(--bg-tertiary);
+}

@@ -1,0 +1,123 @@
+.block {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  margin-top: var(--sp-2);
+}
+
+.blockHeader {
+  position: absolute;
+  left: var(--sp-3);
+  top: 0;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: 0 var(--sp-1);
+  background: var(--bg);
+  color: var(--fg-secondary);
+  font-size: var(--fs-xs);
+}
+
+.blockHeader:hover {
+  color: var(--fg);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--sp-4);
+  padding: var(--sp-3) var(--sp-2) var(--sp-2) var(--sp-2);
+}
+
+.comment {
+  display: flex;
+  gap: var(--sp-2);
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--radius-md);
+}
+
+.comment:hover {
+  background: var(--bg-tertiary);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  height: var(--control-h-sm);
+}
+
+.author {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.date {
+  font-size: var(--fs-xs);
+  color: var(--fg-secondary);
+}
+
+.text {
+  font-size: var(--fs-sm);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.editRow {
+  display: flex;
+  gap: var(--sp-1);
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0 var(--sp-1) 0 var(--sp-3);
+  height: var(--control-h);
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  border-bottom-left-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+  margin-top: var(--sp-4);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  font-size: var(--fs-sm);
+  color: var(--fg);
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--bg);
+  border-radius: var(--radius-md);
+  background: var(--btn);
+}
+
+.send:hover:not(:disabled) {
+  background: var(--btn-hover);
+}
+
+.send:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

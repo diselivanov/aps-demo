@@ -14,7 +14,7 @@
   --btn-hover: #333333;
   --btn-fg: #ffffff;
 
-  --border: rgba(0, 0, 0, 0.1);
+  --border: #e6e6e6;
 
   --danger: #c62828;
   --success: #2e7d32;
@@ -22,23 +22,22 @@
   --glass-success: rgba(46, 125, 50, 0.12);
   --glass-error: rgba(198, 40, 40, 0.12);
 
-  --overlay: rgba(0, 0, 0, 0.3);
+  --overlay: rgba(0, 0, 0, 0.25);
 
   /* shadows */
   --shadow-sm: 0 0 8px rgba(0, 0, 0, 0.06);
 
   /* radii */
   --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 10px;
+  --radius-md: 8px;
   --radius-full: 9999px;
 
   /* sizes */
   --control-h: 36px;
+  --control-h-sm: 30px;
   --sidebar-w: 220px;
-  --avatar-size: 34px;
   --form-w-sm: 400px;
-  --form-w-md: 560px;
+  --form-w-md: 800px;
 
   /* spacing */
   --sp-1: 4px;
@@ -51,7 +50,6 @@
   --fs-xs: 12.5px;
   --fs-sm: 14px;
   --fs-md: 16px;
-  --fs-lg: 20px;
 
   /* other */
   --transition: 0.1s;

@@ -1,0 +1,113 @@
+.root {
+  position: relative;
+  width: 100%;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  width: 100%;
+  height: var(--control-h);
+  padding: 0 var(--sp-3);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+  color: var(--fg);
+  text-align: left;
+  outline: none;
+}
+
+.trigger:focus-visible,
+.open {
+  border-color: var(--fg);
+}
+
+.trigger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.arrow {
+  flex-shrink: 0;
+}
+
+.label {
+  position: absolute;
+  left: var(--sp-3);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--fs-sm);
+  color: var(--fg-secondary);
+  pointer-events: none;
+  padding: 0 var(--sp-1);
+  background: var(--bg);
+  transition:
+    top var(--transition),
+    font-size var(--transition);
+}
+
+.lifted {
+  top: 0;
+  font-size: var(--fs-xs);
+}
+
+.dropdown {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + var(--sp-1));
+  z-index: 50;
+  max-height: 240px;
+  overflow-y: auto;
+  padding: var(--sp-1);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transform-origin: top;
+}
+
+.dropdownTop {
+  top: auto;
+  bottom: calc(100% + var(--sp-1));
+  transform-origin: bottom;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--fs-sm);
+  text-align: left;
+  border-radius: var(--radius-sm);
+  color: var(--fg);
+}
+
+.option:hover {
+  background: var(--bg-tertiary);
+}
+
+.optionLabel {
+  flex: 1;
+  min-width: 0;
+}
+
+.check {
+  flex-shrink: 0;
+  color: var(--fg);
+}

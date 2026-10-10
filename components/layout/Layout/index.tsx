@@ -1,14 +1,12 @@
-import styles from "./index.module.css";
 import type { ReactNode } from "react";
 import Sidebar from "@/components/layout/Sidebar";
+import ContextMenuBlocker from "@/components/layout/ContextMenuBlocker";
+import styles from "./index.module.css";
 
-type Props = {
-  children: ReactNode;
-};
-
-export default function Layout({ children }: Props) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div className={styles.layout}>
+      <ContextMenuBlocker />
       <Sidebar />
       <main className={styles.main}>{children}</main>
     </div>

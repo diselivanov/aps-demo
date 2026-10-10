@@ -1,0 +1,58 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding: var(--sp-3);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  border-radius: var(--radius-md);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: var(--control-h) 1fr 1.5fr 1fr var(--control-h);
+  gap: var(--sp-2);
+  align-items: center;
+}
+
+.overlay {
+  cursor: grabbing;
+  box-shadow: var(--shadow-sm);
+  background: var(--bg);
+}
+
+.drag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-h);
+  height: var(--control-h);
+  cursor: grab;
+  border-radius: var(--radius-md);
+}
+
+.drag:hover {
+  background: var(--bg-tertiary);
+}
+
+.drag:active {
+  cursor: grabbing;
+}
+
+.remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--control-h);
+  height: var(--control-h);
+  border-radius: var(--radius-md);
+}
+
+.remove:hover {
+  background: var(--bg-tertiary);
+}
+
+.optionsRow {
+  width: 100%;
+  padding: 0 calc(var(--control-h) + var(--sp-2));
+}
