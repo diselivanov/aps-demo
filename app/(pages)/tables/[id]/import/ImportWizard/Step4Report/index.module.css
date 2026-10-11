@@ -1,0 +1,78 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.summary {
+  display: flex;
+  gap: var(--sp-4);
+  padding: var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.statValue {
+  font-size: var(--fs-lg);
+  font-weight: 600;
+}
+
+.statLabel {
+  font-size: var(--fs-xs);
+  color: var(--fg-secondary);
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  padding: var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.errorsTitle {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.errorList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.errorRow {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: var(--sp-2);
+  padding: var(--sp-2);
+  font-size: var(--fs-sm);
+  border-radius: var(--radius-sm);
+}
+
+.errorRow:hover {
+  background: var(--bg-secondary);
+}
+
+.errorNum {
+  color: var(--fg-secondary);
+}
+
+.errorMsg {
+  color: var(--danger);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}

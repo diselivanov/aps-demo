@@ -528,6 +528,12 @@ export default function TableGrid({ tableId }: { tableId: number }) {
             <Button variant="secondary" onClick={resetAll}>
               Сброс
             </Button>
+            <Button
+              variant="secondary"
+              onClick={() => router.push(`/tables/${tableId}/import`)}
+            >
+              Импорт
+            </Button>
             <Button onClick={() => openRow("new")}>Добавить запись</Button>
           </div>
         </div>

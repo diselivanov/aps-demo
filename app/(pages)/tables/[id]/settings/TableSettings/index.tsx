@@ -77,21 +77,27 @@ export default function TableSettings({ tableId }: { tableId: number }) {
 
     const fields: Field[] = tableJson.table.fields;
     const cfg: ColumnConfig[] = configJson.config.columns ?? [];
-    const visibleIds = new Set(cfg.map((c) => c.fieldId));
 
     const labels: Record<number, string> = {};
     for (const f of fields) labels[f.id] = f.label;
     setInitialLabels(labels);
 
-    const all = fields
-      .slice()
-      .sort((a, b) => a.order - b.order)
-      .map((f) => ({
-        id: crypto.randomUUID(),
-        fieldId: f.id,
-        label: f.label,
-        visible: cfg.length === 0 ? true : visibleIds.has(f.id),
-      }));
+    if (cfg.length === 0) {
+      const all = fields
+        .slice()
+        .sort((a, b) => a.order - b.order)
+        .map((f) => ({
+          id: crypto.randomUUID(),
+          fieldId: f.id,
+          label: f.label,
+          visible: true,
+        }));
+      setColumns(all);
+      setLoading(false);
+      return;
+    }
+
+    const visibleIds = new Set(cfg.map((c) => c.fieldId));
 
     const visible = cfg
       .slice()
@@ -105,7 +111,15 @@ export default function TableSettings({ tableId }: { tableId: number }) {
         visible: true,
       }));
 
-    const hidden = all.filter((c) => !c.visible);
+    const hidden = fields
+      .filter((f) => !visibleIds.has(f.id))
+      .sort((a, b) => a.order - b.order)
+      .map((f) => ({
+        id: crypto.randomUUID(),
+        fieldId: f.id,
+        label: f.label,
+        visible: false,
+      }));
 
     setColumns([...visible, ...hidden]);
     setLoading(false);
