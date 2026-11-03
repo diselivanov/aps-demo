@@ -9,6 +9,10 @@
   white-space: nowrap;
 }
 
+.fullWidth {
+  width: 100%;
+}
+
 .primary {
   color: var(--btn-fg);
   background: var(--btn);

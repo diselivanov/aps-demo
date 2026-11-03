@@ -2,6 +2,7 @@ import { getCurrentUser } from "@/lib/auth/user";
 import UserMenu from "./UserMenu";
 import DocumentsTree from "./DocumentsTree";
 import Toggle from "./Toggle";
+import LinkButton from "@/components/ui/LinkButton";
 import styles from "./index.module.css";
 
 export default async function Sidebar() {
@@ -17,11 +18,15 @@ export default async function Sidebar() {
         <nav className={styles.nav}>
           <DocumentsTree />
         </nav>
-        {user && (
-          <div className={styles.footer}>
+        <div className={styles.footer}>
+          {user ? (
             <UserMenu user={user} />
-          </div>
-        )}
+          ) : (
+            <LinkButton fullWidth href="/sign-in">
+              Войти
+            </LinkButton>
+          )}
+        </div>
       </div>
     </aside>
   );

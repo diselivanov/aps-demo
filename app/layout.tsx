@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Layout from "@/components/layout/Layout";
 import { AlertProvider } from "@/components/ui/Alert";
-import ChatWidget from "@/components/ui/ChatWidget";
 import "./styles/globals.css";
 
 const geistSans = Geist({
@@ -20,13 +19,14 @@ export const metadata: Metadata = {
   description: "Демо-версия приложения",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout(props: { children: React.ReactNode }) {
+  const { children } = props;
+
   return (
     <html lang="ru" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
         <AlertProvider>
           <Layout>{children}</Layout>
-          <ChatWidget />
         </AlertProvider>
       </body>
     </html>

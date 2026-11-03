@@ -6,16 +6,20 @@ type Variant = "primary" | "secondary" | "ghost";
 
 type Props = ComponentProps<typeof Link> & {
   variant?: Variant;
+  fullWidth?: boolean;
 };
 
 export default function LinkButton({
   variant = "primary",
+  fullWidth,
   className,
   ...props
 }: Props) {
   return (
     <Link
-      className={`${styles.btn} ${styles[variant]} ${className ?? ""}`}
+      className={`${styles.btn} ${styles[variant]} ${
+        fullWidth ? styles.fullWidth : ""
+      } ${className ?? ""}`}
       {...props}
     />
   );

@@ -28,47 +28,70 @@ export default function Step1Upload({ onParsed, onCancel }: Props) {
   const [loading, setLoading] = useState(false);
 
   const parseFile = (file: File) => {
-    if (file.size > MAX_SIZE) {
-      show({ type: "error", message: "Файл больше 10 МБ" });
-      return;
-    }
     if (!file.name.toLowerCase().endsWith(".csv")) {
       show({ type: "error", message: "Только CSV" });
+      return;
+    }
+    if (file.size > MAX_SIZE) {
+      show({ type: "error", message: "Файл больше 10 МБ" });
       return;
     }
 
     setLoading(true);
     Papa.parse<Record<string, string>>(file, {
       header: true,
-      skipEmptyLines: true,
+      skipEmptyLines: "greedy",
+      dynamicTyping: false,
+      transformHeader: (h) => h.replace(/^\uFEFF/, "").trim(),
       complete: (result) => {
         setLoading(false);
 
-        if (result.errors.length > 0) {
+        // критичные ошибки — когда вообще не удалось разобрать
+        const fatal = result.errors.find(
+          (e) =>
+            e.code !== "TooFewFields" &&
+            e.code !== "TooManyFields" &&
+            e.code !== "UndetectableDelimiter",
+        );
+        if (fatal && !result.meta.fields?.length) {
           show({
             type: "error",
-            message: `Ошибка CSV: ${result.errors[0].message}`,
+            message: `Ошибка CSV: ${fatal.message}`,
           });
           return;
         }
 
-        const headers = result.meta.fields ?? [];
+        const headers = (result.meta.fields ?? [])
+          .map((h) => h.replace(/^\uFEFF/, "").trim())
+          .filter(Boolean);
+
         if (headers.length === 0) {
           show({ type: "error", message: "Не найдены заголовки" });
           return;
         }
 
-        const rows = result.data;
+        const rows = result.data.filter((r) =>
+          Object.values(r).some((v) => String(v ?? "").trim() !== ""),
+        );
+
         if (rows.length === 0) {
           show({ type: "error", message: "Файл пуст" });
           return;
         }
         if (rows.length > MAX_ROWS) {
+          show({ type: "error", message: `Максимум ${MAX_ROWS} строк` });
+          return;
+        }
+
+        if (result.errors.length > 0) {
+          // не блокируем, но предупреждаем о количестве «странных» строк
+          const unique = new Set(
+            result.errors.map((e) => e.row).filter((r) => r !== undefined),
+          );
           show({
             type: "error",
-            message: `Максимум ${MAX_ROWS} строк`,
+            message: `CSV: ${unique.size} проблемных строк — проверьте импорт`,
           });
-          return;
         }
 
         onParsed({
